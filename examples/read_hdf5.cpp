@@ -42,7 +42,7 @@ bool read_hdf5_rank4(const std::string filepath, Eigen::Tensor<float, 4, Eigen::
     /*
      * Setup tensor.
      */
-    dense = Eigen::Tensor<float, rank, Eigen::RowMajor>(dimsf[0], dimsf[1], dimsf[2], dimsf[3]);
+    dense = Eigen::Tensor<float, rank, Eigen::RowMajor>((long) dimsf[0],(long) dimsf[1],(long) dimsf[2],(long) dimsf[3]);
     float* buffer = static_cast<float*>(dense.data());
 
     /*
@@ -54,19 +54,19 @@ bool read_hdf5_rank4(const std::string filepath, Eigen::Tensor<float, 4, Eigen::
 
   // catch failure caused by the H5File operations
   catch(H5::FileIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSet operations
   catch(H5::DataSetIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataSpaceIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
@@ -103,7 +103,7 @@ bool read_hdf5_rank5(const std::string filepath, Eigen::Tensor<float, 5, Eigen::
     /*
      * Setup tensor.
      */
-    dense = Eigen::Tensor<float, rank, Eigen::RowMajor>(dimsf[0], dimsf[1], dimsf[2], dimsf[3], dimsf[4]);
+    dense = Eigen::Tensor<float, rank, Eigen::RowMajor>((long) dimsf[0],(long) dimsf[1], (long) dimsf[2],(long) dimsf[3],(long) dimsf[4]);
     float* buffer = static_cast<float*>(dense.data());
 
     /*
@@ -115,19 +115,19 @@ bool read_hdf5_rank5(const std::string filepath, Eigen::Tensor<float, 5, Eigen::
 
   // catch failure caused by the H5File operations
   catch(H5::FileIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSet operations
   catch(H5::DataSetIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataSpaceIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 

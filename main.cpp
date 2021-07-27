@@ -92,15 +92,15 @@ bool triangle_ray_intersection(const Eigen::Vector3f &origin, const Eigen::Vecto
  */
 bool triangle_box_intersection(const Eigen::Vector3f &min, Eigen::Vector3f &max, const Eigen::Vector3f &v1, const Eigen::Vector3f &v2, const Eigen::Vector3f &v3) {
   float half_size[3] = {
-    (max(0) - min(0))/2.,
-    (max(1) - min(1))/2.,
-    (max(2) - min(2))/2.
+    (float) ((max(0) - min(0))/2.),
+    (float) ((max(1) - min(1))/2.),
+    (float) ((max(2) - min(2))/2.)
   };
 
   float center[3] = {
-    max(0) - half_size[0],
-    max(1) - half_size[1],
-    max(2) - half_size[2]
+    (float) ( max(0) - half_size[0]),
+    (float) ( max(1) - half_size[1]),
+    (float) ( max(2) - half_size[2])
   };
 
   float vertices[3][3] = {{v1(0), v1(1), v1(2)}, {v2(0), v2(1), v2(2)}, {v3(0), v3(1), v3(2)}};
@@ -451,25 +451,25 @@ bool write_float_hdf5(const std::string filepath, Eigen::Tensor<float, RANK, Eig
 
   // catch failure caused by the H5File operations
   catch(H5::FileIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSet operations
   catch(H5::DataSetIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataSpaceIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataTypeIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
@@ -537,25 +537,25 @@ bool write_int_hdf5(const std::string filepath, Eigen::Tensor<int, RANK, Eigen::
 
   // catch failure caused by the H5File operations
   catch(H5::FileIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSet operations
   catch(H5::DataSetIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataSpaceIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 
   // catch failure caused by the DataSpace operations
   catch(H5::DataTypeIException error) {
-    error.printError();
+    error.printErrorStack();
     return false;
   }
 

@@ -169,7 +169,7 @@ class Mesh:
         """
 
         assert len(scales) == 3
-
+        print(self.vertices[:, 0])
         for i in range(3):
             self.vertices[:, i] *= scales[i]
 
